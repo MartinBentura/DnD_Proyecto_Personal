@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD Character Manager</title>
+</head>
+<body>
+    <h1>Welcome to your DnD Character Manager</h1>
+    <p>Here you will soon be able to create and manage your characters! 🎲</p>
+
+    <h2>Created Characters:</h2>
+
+    {% if characters %}
+        <ul>
+             {% for c in characters %}
+                <li>
+                    {{ c.name }} — {{ c.race }} {{ c.character_class }} (Level {{ c.level }})
+                    <a href="/delete/{{ loop.index0 }}">[Delete]</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No characters created yet.</p>
+    {% endif %}
+
+<br>
+
+<a href="/create">Create a Character</a>
+    
+</body>
+</html>
