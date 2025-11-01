@@ -64,7 +64,7 @@ def create_character():
             name=name,
             race=race,
             character_class=character_class,
-            level=level
+            level=level,
             str=int(request.form["str"]),
             dex=int(request.form["dex"]),
             con=int(request.form["con"]),
