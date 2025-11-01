@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="mb-4">Edit Character</h2>
+
+<form method="POST" class="bg-secondary p-4 rounded">
+    <label>Name</label>
+    <input class="form-control mb-3" type="text" name="name" value="{{ character.name }}" required>
+
+    <label>Race</label>
+    <input class="form-control mb-3" type="text" name="race" value="{{ character.race }}" required>
+
+    <label>Class</label>
+    <input class="form-control mb-3" type="text" name="character_class" value="{{ character.character_class }}" required>
+
+    <label>Level</label>
+    <input class="form-control mb-3" type="number" name="level" value="{{ character.level }}" required>
+
+    <label>STR:</label>
+    <input type="number" name="str" value="{{ character.str }}" required><br><br>
+
+    <label>DEX:</label>
+    <input type="number" name="dex" value="{{ character.dex }}" required><br><br>
+
+    <label>CON:</label>
+    <input type="number" name="con" value="{{ character.con }}" required><br><br>
+
+    <label>INT:</label>
+    <input type="number" name="int" value="{{ character.int }}" required><br><br>
+
+    <label>WIS:</label>
+    <input type="number" name="wis" value="{{ character.wis }}" required><br><br>
+
+    <label>CHA:</label>
+    <input type="number" name="cha" value="{{ character.cha }}" required><br><br>
+
+
+    <button class="btn btn-warning" type="submit">Save Changes</button>
+</form>
+
+{% endblock %}

@@ -1,30 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Character</title>
-</head>
-<body>
-    <h1>Create new chatacter</h1>
-    <form method="POSt">
+{% extends "layout.html" %}
+{% block content %}
 
-        <label>Name:</label>
-        <input type="text" name="name" required><br><br>
+<h2 class="mb-4">Create Character</h2>
 
-        <label>Race:</label>
-        <input type="text" name="race" required><br><br>
+<form method="POST" class="bg-secondary p-4 rounded">
+    <label>Name</label>
+    <input class="form-control mb-3" type="text" name="name" required>
 
-        <label>Class:</label>
-        <input type="text" name="character_class" required><br><br>
+    <label>Race</label>
+    <input class="form-control mb-3" type="text" name="race" required>
 
-        <label>Level:</label>
-        <input type="text" name="level" min="1" max="20" required><br><br>
+    <label>Class</label>
+    <input class="form-control mb-3" type="text" name="character_class" required>
 
-        <button type="submit">Create</button>
-    </form>
-    
-    <a href="/">Back Home</a>
+    <label>Level</label>
+    <input class="form-control mb-3" type="number" name="level" min="1" max="20" required>
 
-</body>
-</html>
+    <label>STR:</label>
+    <input type="number" name="str" value="10" min="1" max="20" required><br><br>
+
+    <label>DEX:</label>
+    <input type="number" name="dex" value="10" min="1" max="20" required><br><br>
+
+    <label>CON:</label>
+    <input type="number" name="con" value="10" min="1" max="20" required><br><br>
+
+    <label>INT:</label>
+    <input type="number" name="int" value="10" min="1" max="20" required><br><br>
+
+    <label>WIS:</label>
+    <input type="number" name="wis" value="10" min="1" max="20" required><br><br>
+
+    <label>CHA:</label>
+    <input type="number" name="cha" value="10" min="1" max="20" required><br><br>
+
+
+    <button class="btn btn-success" type="submit">Create</button>
+</form>
+
+{% endblock %}
