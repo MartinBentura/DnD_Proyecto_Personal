@@ -1,41 +1,38 @@
 {% extends "layout.html" %}
+
 {% block content %}
+<div class="container mt-4">
+    <h2>Create New Character</h2>
 
-<h2 class="mb-4">Create Character</h2>
+    <form method="POST" class="mt-3">
 
-<form method="POST" class="bg-secondary p-4 rounded">
-    <label>Name</label>
-    <input class="form-control mb-3" type="text" name="name" required>
+        <!-- Character Info -->
+        <label><strong>Name:</strong></label>
+        <input type="text" name="name" class="form-control" required>
 
-    <label>Race</label>
-    <input class="form-control mb-3" type="text" name="race" required>
+        <label class="mt-3"><strong>Race:</strong></label>
+        <input type="text" name="race" class="form-control" required>
 
-    <label>Class</label>
-    <input class="form-control mb-3" type="text" name="character_class" required>
+        <label class="mt-3"><strong>Class:</strong></label>
+        <input type="text" name="character_class" class="form-control" required>
 
-    <label>Level</label>
-    <input class="form-control mb-3" type="number" name="level" min="1" max="20" required>
+        <label class="mt-3"><strong>Level:</strong></label>
+        <input type="number" name="level" class="form-control" min="1" max="20" value="1" required>
 
-    <label>STR:</label>
-    <input type="number" name="str" value="10" min="1" max="20" required><br><br>
+        <hr>
+        <h4>Stats</h4>
 
-    <label>DEX:</label>
-    <input type="number" name="dex" value="10" min="1" max="20" required><br><br>
+        <div class="row">
+            {% for stat in ["str","dex","con","int","wis","cha"] %}
+            <div class="col-md-4 mt-3">
+                <label><strong>{{ stat.upper() }}:</strong></label>
+                <input type="number" name="{{ stat }}" class="form-control" min="1" max="20" value="10" required>
+            </div>
+            {% endfor %}
+        </div>
 
-    <label>CON:</label>
-    <input type="number" name="con" value="10" min="1" max="20" required><br><br>
-
-    <label>INT:</label>
-    <input type="number" name="int" value="10" min="1" max="20" required><br><br>
-
-    <label>WIS:</label>
-    <input type="number" name="wis" value="10" min="1" max="20" required><br><br>
-
-    <label>CHA:</label>
-    <input type="number" name="cha" value="10" min="1" max="20" required><br><br>
-
-
-    <button class="btn btn-success" type="submit">Create</button>
-</form>
-
+        <button type="submit" class="btn btn-success mt-4">Create ✅</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-4">Cancel</a>
+    </form>
+</div>
 {% endblock %}
