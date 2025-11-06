@@ -4,7 +4,7 @@ import math
 
 app = Flask(__name__)
 
-# Configuración de BD SQLite
+# Configuración BD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///characters.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -26,12 +26,16 @@ class Personaje(db.Model):
     wis = db.Column(db.Integer, default=10)
     cha = db.Column(db.Integer, default=10)
 
+    # Combat
+    hp = db.Column(db.Integer, default=10)
+    ac = db.Column(db.Integer, default=10)
+    speed = db.Column(db.Integer, default=30)
+
 
 with app.app_context():
     db.create_all()
 
 
-# Función para calcular modificadores de D&D
 def get_modifier(stat):
     return math.floor((stat - 10) / 2)
 
@@ -41,12 +45,14 @@ def home():
     characters = Personaje.query.all()
     return render_template("index.html", characters=characters)
 
+
 @app.route("/character/<int:id>")
 def view_character(id):
     character = Personaje.query.get(id)
     if not character:
         return redirect(url_for("home"))
-    return render_template("character.html", character=character, get_modifier=get_modifier, getattr=getattr)
+    return render_template("character.html", character=character,
+                           get_modifier=get_modifier, getattr=getattr)
 
 
 @app.route("/delete/<int:id>")
@@ -71,7 +77,10 @@ def create_character():
             con=int(request.form["con"]),
             int=int(request.form["int"]),
             wis=int(request.form["wis"]),
-            cha=int(request.form["cha"])
+            cha=int(request.form["cha"]),
+            hp=int(request.form["hp"]),
+            ac=int(request.form["ac"]),
+            speed=int(request.form["speed"])
         )
 
         db.session.add(new_char)
@@ -96,6 +105,9 @@ def edit_character(id):
         character.int = int(request.form["int"])
         character.wis = int(request.form["wis"])
         character.cha = int(request.form["cha"])
+        character.hp = int(request.form["hp"])
+        character.ac = int(request.form["ac"])
+        character.speed = int(request.form["speed"])
 
         db.session.commit()
         return redirect(url_for("home"))

@@ -47,6 +47,36 @@
     margin-top: -10px;
 }
 
+/* === COMBAT CIRCLES === */
+.combat-circle {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #4b3a25;
+    border-radius: 50%;
+    background: #e9dbc4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Cinzel", serif;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.combat-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2b2418;
+}
+
+.combat-label {
+    font-size: 0.85rem;
+    margin-top: -2px;
+    color: #3b2e1f;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
 /* === FANTASY CARD === */
 .card-fantasy {
     background: #f8f4e8;

@@ -1,43 +1,65 @@
 {% extends "layout.html" %}
-
 {% block content %}
 <div class="container mt-4">
-    <h2>Edit Character</h2>
+    <h2 class="text-center mb-3">Edit Character</h2>
 
-    <form method="POST" class="mt-3">
+    <form method="POST">
 
-        <!-- Character Info -->
-        <label><strong>Name:</strong></label>
-        <input type="text" name="name" class="form-control" value="{{ character.name }}" required>
+        <!-- Básicos -->
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" value="{{ character.name }}" required>
+        </div>
 
-        <label class="mt-3"><strong>Race:</strong></label>
-        <input type="text" name="race" class="form-control" value="{{ character.race }}" required>
+        <div class="mb-3">
+            <label class="form-label">Race</label>
+            <input type="text" class="form-control" name="race" value="{{ character.race }}" required>
+        </div>
 
-        <label class="mt-3"><strong>Class:</strong></label>
-        <input type="text" name="character_class" class="form-control" value="{{ character.character_class }}" required>
+        <div class="mb-3">
+            <label class="form-label">Class</label>
+            <input type="text" class="form-control" name="character_class" value="{{ character.character_class }}"
+                required>
+        </div>
 
-        <label class="mt-3"><strong>Level:</strong></label>
-        <input type="number" name="level" class="form-control" value="{{ character.level }}" min="1" max="20" required>
+        <div class="mb-3">
+            <label class="form-label">Level</label>
+            <input type="number" class="form-control" name="level" min="1" value="{{ character.level }}" required>
+        </div>
 
+        <!-- HP / AC / Speed -->
         <hr>
-        <h4>Stats</h4>
-
+        <h5>Defense and Movement</h5>
         <div class="row">
-            {% for stat in ["str", "dex", "con", "int", "wis", "cha"] %}
-            <div class="col-md-4 mt-3">
-                <label><strong>{{ stat|upper }}:</strong></label>
-                <input type="number"
-                       name="{{ stat }}"
-                       class="form-control"
-                       min="1" max="20"
-                       value="{{ getattr(character, stat) }}"
-                       required>
+            <div class="col">
+                <label class="form-label">HP</label>
+                <input type="number" class="form-control" name="hp" value="{{ character.hp }}">
+            </div>
+            <div class="col">
+                <label class="form-label">AC</label>
+                <input type="number" class="form-control" name="ac" value="{{ character.ac }}">
+            </div>
+            <div class="col">
+                <label class="form-label">Speed</label>
+                <input type="number" class="form-control" name="speed" value="{{ character.speed }}">
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <hr>
+        <h5>Stats</h5>
+        <div class="row">
+            {% for stat in ["str","dex","con","int","wis","cha"] %}
+            <div class="col-4 mb-3">
+                <label class="form-label">{{ stat.upper() }}</label>
+                <input type="number" class="form-control" name="{{ stat }}" value="{{ getattr(character, stat) }}">
             </div>
             {% endfor %}
         </div>
 
-        <button type="submit" class="btn btn-warning mt-4">Save Changes ✏️</button>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-4">Cancel</a>
+        <button type="submit" class="btn btn-success mt-3">Update</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Cancel</a>
+
     </form>
 </div>
 {% endblock %}
