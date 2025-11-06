@@ -19,35 +19,28 @@
             </div>
         </div>
 
-        <!-- Stats -->
+        <!-- Stats en círculos -->
         <div class="col-md-6">
-            <div class="card shadow-sm p-3 mb-4">
+            <div class="card shadow-sm p-3 mb-4 text-center">
                 <h4>Stats</h4>
-                    <table class="table table-bordered w-50">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Stat</th>
-                                <th>Value</th>
-                                <th>Modifier</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for stat in ["str","dex","con","int","wis","cha"] %}
-                            <tr>
-                                <td>{{ stat.upper() }}</td>
-                                <td>{{ getattr(character, stat) }}</td>
-                                <td>
-                                    {% set mod = get_modifier(getattr(character, stat)) %}
-                                    {% if mod >= 0 %}
-                                        +{{ mod }}
-                                    {% else %}
-                                        {{ mod }}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+
+                <div class="row justify-content-center">
+                    {% for stat in ["str","dex","con","int","wis","cha"] %}
+                    {% set value = getattr(character, stat) %}
+                    {% set mod = get_modifier(value) %}
+
+                    <div class="col-4 mt-3 d-flex justify-content-center">
+                        <div class="stat-circle">
+                            <div class="stat-mod 
+                        {% if mod > 0 %}mod-positive{% elif mod < 0 %}mod-negative{% else %}mod-zero{% endif %}">
+                                {% if mod >= 0 %}+{{ mod }}{% else %}{{ mod }}{% endif %}
+                            </div>
+                            <div class="stat-label">{{ stat.upper() }}</div>
+                            <div class="stat-value">{{ value }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
