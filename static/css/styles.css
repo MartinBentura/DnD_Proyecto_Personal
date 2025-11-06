@@ -1,30 +1,66 @@
+/* === STAT CIRCLE === */
 .stat-circle {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border: 3px solid #2c2c2c;
     border-radius: 50%;
+    background-color: #faf7f0;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f8f9fa;
+    align-items: center;
+    font-family: "Cinzel", serif;
 }
 
 .stat-mod {
     font-size: 1.4rem;
     font-weight: bold;
+    position: absolute;
+    top: 6px;
+    background: #fff6;
+    padding: 2px 8px;
+    border-radius: 8px;
+    border: 2px solid #2c2c2c;
 }
 
-.mod-positive { color: green; }
-.mod-negative { color: red; }
-.mod-zero { color: gray; }
+.mod-positive {
+    color: #0a7b00;
+}
+
+.mod-negative {
+    color: #b20000;
+}
+
+.mod-zero {
+    color: #3c3c3c;
+}
 
 .stat-label {
     font-size: 0.85rem;
-    margin-top: -5px;
+    margin-top: 30px;
 }
 
 .stat-value {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    margin-top: -10px;
+}
+
+/* === FANTASY CARD === */
+.card-fantasy {
+    background: #f8f4e8;
+    border: 2px solid #4b3a25;
+    border-radius: 12px;
+    padding: 10px;
+    background-image: url("https://i.imgur.com/c2PzYdP.png");
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.card-fantasy h4 {
+    font-family: "Cinzel", serif;
+    font-size: 1.4rem;
+    color: #3b2e1f;
+    text-shadow: 1px 1px 2px #fff;
 }
