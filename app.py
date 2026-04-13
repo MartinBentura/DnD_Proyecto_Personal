@@ -5,8 +5,8 @@ import math
 app = Flask(__name__)
 
 # Configuración BD
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///characters.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:q1w2e3r4@localhost/dnd_character_db'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
